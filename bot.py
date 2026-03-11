@@ -71,28 +71,23 @@ Gợi ý cải thiện
 """
 
 CTR_PROMPT = """
-Bạn là chuyên gia chiến lược thumbnail YouTube.
+Bạn là chuyên gia YouTube thumbnail.
 
-Phân tích thumbnail và dự đoán tiềm năng CTR.
+Phân tích thumbnail và dự đoán CTR.
 
-Đánh giá từng tiêu chí từ 1-10:
+Trả về:
 
-1. Visual Hook
-2. Độ rõ của chủ thể
-3. Contrast
-4. Cảm xúc / Sự tò mò
-5. Độ dễ đọc của chữ
-6. Sự đơn giản
+Điểm CTR (1-10)
 
-Định dạng phản hồi:
-
-Điểm CTR dự đoán (1-10)
-
-Ước tính CTR
+CTR dự đoán
 
 Điểm mạnh
+
 Điểm yếu
-Cải thiện để tăng CTR
+
+Cách cải thiện
+
+Trả lời bằng tiếng Việt.
 """
 
 DEFAULT_PROMPT = """

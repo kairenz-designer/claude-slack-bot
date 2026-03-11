@@ -73,6 +73,35 @@ Problems
 Fix suggestions
 """
 
+CTR_PROMPT = """
+You are a YouTube thumbnail strategist.
+
+Analyze the thumbnail and estimate its click-through rate potential.
+
+Evaluate:
+
+1. Visual Hook
+2. Subject Clarity
+3. Contrast
+4. Emotion / Curiosity
+5. Text readability
+6. Simplicity
+
+Score each from 1-10.
+
+Then estimate overall CTR potential.
+
+Return format:
+
+CTR Prediction Score (1-10)
+
+Estimated CTR Range
+
+Strengths
+Weaknesses
+Improvements to increase CTR
+"""
+
 DEFAULT_PROMPT = """
 You are Kairenz, an AI designer teammate helping a YouTube content team.
 """
@@ -96,6 +125,9 @@ def detect_mode(text):
     if text.startswith("/thumbnail"):
         return "thumbnail"
 
+    if text.startswith("/ctr"):
+        return "ctr"
+
     return "default"
 
 
@@ -116,6 +148,9 @@ def get_prompt(mode):
 
     if mode == "thumbnail":
         return THUMBNAIL_PROMPT
+
+    if mode == "ctr":
+        return CTR_PROMPT
 
     return DEFAULT_PROMPT
 

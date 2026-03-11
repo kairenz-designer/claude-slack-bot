@@ -29,16 +29,16 @@ Trả lời bằng tiếng Việt.
 """
 
 DESIGN_PROMPT = """
-You are a senior designer.
+Bạn là senior designer.
 
-Give critique about:
-- visual hierarchy
-- contrast
-- typography
-- composition
-- color
+Hãy critique design theo:
 
-Explain WHY and give fixes.
+1. focal point
+2. contrast
+3. bố cục
+4. typography
+
+Trả lời bằng tiếng Việt.
 """
 
 FEEDBACK_PROMPT = """

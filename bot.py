@@ -216,6 +216,47 @@ def analyze_thumbnail(image_url):
 
 
 # -------------------------
+# CTR PREDICTION
+# -------------------------
+
+def predict_ctr(image_url):
+
+    headers = {
+        "Authorization": f"Bearer {SLACK_BOT_TOKEN}"
+    }
+
+    image_bytes = requests.get(image_url, headers=headers).content
+    image_b64 = base64.b64encode(image_bytes).decode()
+
+    response = client.messages.create(
+        model="claude-3-7-sonnet-20250219",
+        max_tokens=600,
+        system=CTR_PROMPT,
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "image/jpeg",
+                            "data": image_b64
+                        }
+                    },
+                    {
+                        "type": "text",
+                        "text": "Predict CTR potential for this YouTube thumbnail."
+                    }
+                ]
+            }
+        ]
+    )
+
+    return response.content[0].text
+
+
+# -------------------------
 # IMAGE EXTRACTION
 # -------------------------
 

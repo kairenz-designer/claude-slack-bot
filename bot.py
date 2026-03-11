@@ -286,6 +286,13 @@ def handle_message(event, say):
     if "bot_id" in event:
         return
 
+    image_url = get_image_url(event)
+
+    if image_url and "/ctr" in text:
+        reply = predict_ctr(image_url)
+        say(reply)
+        return
+
     mode = detect_mode(text)
 
     reply = ask_claude(text, mode)

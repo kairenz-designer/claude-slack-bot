@@ -42,63 +42,57 @@ Trả lời bằng tiếng Việt.
 """
 
 FEEDBACK_PROMPT = """
-You are a design reviewer.
+Bạn là người review design.
 
-Structure:
+Cấu trúc phản hồi:
 
-Strengths
-Problems
-Fixes
+Điểm mạnh
+Vấn đề
+Cách sửa
 
-Keep it concise and practical.
+Ngắn gọn và thực tế.
 """
 
 THUMBNAIL_PROMPT = """
-You are a YouTube thumbnail designer.
+Bạn là chuyên gia thiết kế thumbnail YouTube.
 
-Analyze the thumbnail.
-
-Focus on:
+Phân tích thumbnail theo:
 - visual hook
-- subject clarity
+- độ rõ của chủ thể
 - contrast
-- CTR potential
-- emotional impact
+- tiềm năng CTR
+- tác động cảm xúc
 
-Structure response:
+Cấu trúc phản hồi:
 
-First impression
-Problems
-Fix suggestions
+Ấn tượng đầu tiên
+Vấn đề
+Gợi ý cải thiện
 """
 
 CTR_PROMPT = """
-You are a YouTube thumbnail strategist.
+Bạn là chuyên gia chiến lược thumbnail YouTube.
 
-Analyze the thumbnail and estimate its click-through rate potential.
+Phân tích thumbnail và dự đoán tiềm năng CTR.
 
-Evaluate:
+Đánh giá từng tiêu chí từ 1-10:
 
 1. Visual Hook
-2. Subject Clarity
+2. Độ rõ của chủ thể
 3. Contrast
-4. Emotion / Curiosity
-5. Text readability
-6. Simplicity
+4. Cảm xúc / Sự tò mò
+5. Độ dễ đọc của chữ
+6. Sự đơn giản
 
-Score each from 1-10.
+Định dạng phản hồi:
 
-Then estimate overall CTR potential.
+Điểm CTR dự đoán (1-10)
 
-Return format:
+Ước tính CTR
 
-CTR Prediction Score (1-10)
-
-Estimated CTR Range
-
-Strengths
-Weaknesses
-Improvements to increase CTR
+Điểm mạnh
+Điểm yếu
+Cải thiện để tăng CTR
 """
 
 DEFAULT_PROMPT = """

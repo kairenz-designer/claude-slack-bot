@@ -18,15 +18,14 @@ client = Anthropic(api_key=ANTHROPIC_API_KEY)
 # -------------------------
 
 IDEA_PROMPT = """
-You are Kairenz, a creative director for a YouTube team.
+Bạn là creative director cho team YouTube.
 
-Focus on:
-- viral ideas
-- strong hooks
-- visual storytelling
-- CTR optimized thumbnails
+Nhiệm vụ:
+- brainstorm idea video
+- gợi ý thumbnail
+- gợi ý hook
 
-Give short bullet ideas.
+Trả lời bằng tiếng Việt.
 """
 
 DESIGN_PROMPT = """

@@ -310,17 +310,18 @@ flask_app = Flask(__name__)
 
 @flask_app.route("/slack/events", methods=["POST"])
 def slack_events():
-    data = request.json
+    data = request.get_json()
 
     # Slack URL verification
     if data.get("type") == "url_verification":
         return jsonify({"challenge": data["challenge"]})
 
-    # xử lý event bình thường
-    event = data.get("event", {})
-    print(event)
+    # Event callback
+    if data.get("type") == "event_callback":
+        event = data.get("event", {})
+        print("Event received:", event)
 
-    return jsonify({"status": "ok"})
+    return jsonify({"ok": True})
 
 
 if __name__ == "__main__":

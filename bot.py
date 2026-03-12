@@ -1,8 +1,9 @@
+from flask import Flask, request
+from slack_bolt import App
+from slack_bolt.adapter.flask import SlackRequestHandler
 import os
 import base64
 import requests
-from flask import Flask, request, jsonify
-from slack_bolt import App
 from anthropic import Anthropic
 from dotenv import load_dotenv
 

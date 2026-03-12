@@ -314,9 +314,13 @@ def slack_events():
 
     # Slack URL verification
     if data.get("type") == "url_verification":
-        return jsonify({"challenge": data.get("challenge")})
+        return jsonify({"challenge": data["challenge"]})
 
-    return jsonify({"ok": True})
+    # xử lý event bình thường
+    event = data.get("event", {})
+    print(event)
+
+    return jsonify({"status": "ok"})
 
 
 if __name__ == "__main__":

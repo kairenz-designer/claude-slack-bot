@@ -12,7 +12,7 @@ load_dotenv()
 SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
-app = App(token=SLACK_BOT_TOKEN)
+bolt_app = App(token=os.environ["SLACK_BOT_TOKEN"])
 client = Anthropic(api_key=ANTHROPIC_API_KEY)
 
 # -------------------------
@@ -281,7 +281,7 @@ def get_image_url(event):
 # SLACK HANDLER
 # -------------------------
 
-@app.event("message")
+@bolt_app.event("message")
 def handle_message(event, say):
 
     text = event.get("text", "")
@@ -308,21 +308,11 @@ def handle_message(event, say):
 # -------------------------
 
 flask_app = Flask(__name__)
+handler = SlackRequestHandler(bolt_app)
 
 @flask_app.route("/slack/events", methods=["POST"])
 def slack_events():
-    data = request.get_json()
-
-    # Slack URL verification
-    if data.get("type") == "url_verification":
-        return jsonify({"challenge": data["challenge"]})
-
-    # Event callback
-    if data.get("type") == "event_callback":
-        event = data.get("event", {})
-        print("Event received:", event)
-
-    return jsonify({"ok": True})
+    return handler.handle(request)
 
 
 if __name__ == "__main__":

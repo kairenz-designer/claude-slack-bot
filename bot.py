@@ -326,4 +326,7 @@ def slack_events():
 
 if __name__ == "__main__":
     print("Bot Kairenz is running...")
-    flask_app.run(port=3000)
+    flask_import os
+
+port = int(os.environ.get("PORT", 3000))
+app.run(host="0.0.0.0", port=port)

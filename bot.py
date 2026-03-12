@@ -284,8 +284,6 @@ def get_image_url(event):
 @bolt_app.command("/design")
 def handle_design(ack, respond, command):
     ack()
-    text = command["text"]
-    respond(f"Bạn hỏi: {text}")
 
 
 # -------------------------

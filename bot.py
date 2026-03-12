@@ -285,6 +285,10 @@ def get_image_url(event):
 def handle_design(ack, respond, command):
     ack()
 
+    text = command["text"]
+
+    respond(f"🎨 Design review:\n{text}")
+
 
 # -------------------------
 # SLACK HANDLER

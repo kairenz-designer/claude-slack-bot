@@ -1,6 +1,7 @@
 import os
 import base64
 import requests
+from flask import Flask, request, jsonify
 from slack_bolt import App
 from anthropic import Anthropic
 from dotenv import load_dotenv
@@ -305,6 +306,19 @@ def handle_message(event, say):
 # RUN BOT
 # -------------------------
 
+flask_app = Flask(__name__)
+
+@flask_app.route("/slack/events", methods=["POST"])
+def slack_events():
+    data = request.json
+
+    # Slack URL verification
+    if data.get("type") == "url_verification":
+        return jsonify({"challenge": data.get("challenge")})
+
+    return jsonify({"ok": True})
+
+
 if __name__ == "__main__":
     print("Bot Kairenz is running...")
-    app.start(port=3000)
+    flask_app.run(port=3000)

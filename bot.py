@@ -278,6 +278,17 @@ def get_image_url(event):
 
 
 # -------------------------
+# SLASH COMMANDS
+# -------------------------
+
+@bolt_app.command("/design")
+def handle_design(ack, respond, command):
+    ack()
+    text = command["text"]
+    respond(f"Bạn hỏi: {text}")
+
+
+# -------------------------
 # SLACK HANDLER
 # -------------------------
 
